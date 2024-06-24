@@ -40,11 +40,10 @@
                 <p id="backs">Returns</p>
                 <p id="order">& Orders</p>
             </div>
-            <div class="cartborder" onclick="
-            cartAddition();">
+            <div class="cartborder">
                 <i class="fa-solid fa-cart-shopping"></i>
                 <p id="number">Cart</p>
-                <p class="cartNumber1"></p>
+                <p class="js-cart-quantity"></p>
             </div>
         </div>
         <div class="secnavbar">
@@ -119,6 +118,15 @@
             <a class="link3" href="#">See more products to review</a>
         </div>
     </div>
+    <div class="main">
+        <div class="products-grid js-products-grid">
+        </div>
+    </div>
+    <div>
+        <script src="cart.js"></script>
+        <script src="product.js"></script>
+        <script src="amazon.js"></script>
+    </div>
     <footer>
         <div class="footer1">
             <div class="footerinfo">
@@ -130,7 +138,7 @@
                     <li><a class="information" href="#">Press Releases</a></li>
                     </ul>
                 </div>
-                <div class="div2">
+                <div class="div1">
                     <div class="title1">Connect with Us</div>
                     <ul>
                     <li><a class="information" href="#">Facebook</a></li>
@@ -138,7 +146,7 @@
                     <li><a class="information" href="#">Instagram</a></li>
                     </ul>
                 </div>
-                <div class="div3">
+                <div class="div1">
                     <div class="title1">Let us help you</div>
                     <ul>
                     <li><a class="information" href="#">Covid 19</a></li>
@@ -146,7 +154,7 @@
                     <li><a class="information" href="#">Help</a></li>
                     </ul> 
                 </div>
-                <div class="div4">
+                <div class="div1">
                     <div class="title1">Make Money with Us</div>
                     <ul>
                         <li><a class="information" href="#">Sell on Amazon</a></li>
@@ -160,12 +168,11 @@
                     <div class="logo1"></div>
                 </div>
                 <div class="lettering">
-                    <div class="rights1">@Amazon Inc.</div>
+                    <div class="rights">@Amazon Inc.</div>
                     <div class="rights">Nilesh Joshi & Associates</div>
                 </div>
             </div>
         </div>
     </footer>
-</body>
-<script src="amazon.js"></script>
+    </body>
 </html>
