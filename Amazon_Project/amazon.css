@@ -378,8 +378,11 @@ li{
     font-weight: bold;
 }
 .cartborder{
-    display: flex;
     cursor: pointer;
+}
+.checkout{
+    display: flex;
+    text-decoration: none;
 }
 .main {
     position: relative;
