@@ -7,12 +7,11 @@ cart.forEach((cartProduct) => {
     products.forEach((product) =>{
         if (productId === product.id){
             matchingItem = product;
-            console.log(matchingItem);
         }
       });
         cartHTML += `<div class="checkout-grid">
         <div class="order-summary ">
-          <div class="cart-item-container">
+          <div class="cart-item-container js-cart-item-container-${matchingItem.id}">
             <div class="delivery-date">
               Delivery date: Tuesday, June 21
             </div>
@@ -87,46 +86,14 @@ cart.forEach((cartProduct) => {
         </div>
     </div>
 
-<div class="payment-summary">
-<div class="payment-summary-title">
-  Order Summary
-</div>
-
-<div class="payment-summary-row">
-  <div>Items (3):</div>
-  <div class="payment-summary-money">$42.75</div>
-</div>
-
-<div class="payment-summary-row">
-  <div>Shipping &amp; handling:</div>
-  <div class="payment-summary-money">$4.99</div>
-</div>
-
-<div class="payment-summary-row subtotal-row">
-  <div>Total before tax:</div>
-  <div class="payment-summary-money">$47.74</div>
-</div>
-
-<div class="payment-summary-row">
-  <div>Estimated tax (10%):</div>
-  <div class="payment-summary-money">$4.77</div>
-</div>
-
-<div class="payment-summary-row total-row">
-  <div>Order total:</div>
-  <div class="payment-summary-money">$52.51</div>
-</div>
-
-<button class="place-order-button button-primary">
-  Place your order
-</button>
-</div>`;    
+`;    
     });
 document.querySelector('.js-order-summary').innerHTML = cartHTML;
 document.querySelectorAll('.js-delete-link').forEach((link) => {
   link.addEventListener('click', () => {
     let productId = link.dataset.productId;
     removeFromcart(productId);
-    console.log(cart);
+    const container = document.querySelector(`.js-cart-item-container-${productId}`);
+    container.remove();
   })
 });

@@ -45,12 +45,10 @@ export function  addtoCart(productId){
     }
 
 }
-
 export function removeFromcart(productId){
     const newCart = [];
     cart.forEach((cartItem) => {
         if (cartItem.id !== productId){
-          console.log("test");
           newCart.push(cartItem);
         }
     })
