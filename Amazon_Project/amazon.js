@@ -61,10 +61,9 @@ document.querySelectorAll('.js-add-to-cart').forEach((button) => {
     button.addEventListener('click',() => {
     const productId = button.dataset.productId;
     addtoCart(productId);
-
     let cartQuantity = 0;
     cart.forEach((number) =>{
-        cartQuantity += number.quantity;;
+        cartQuantity += number.quantity;
     })
     document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
     console.log(cartQuantity);

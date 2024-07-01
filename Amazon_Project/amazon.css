@@ -376,9 +376,14 @@ li{
     padding-left: 3px;
     color: #febd68;
     font-weight: bold;
+    text-decoration: none;
+}
+.number{
+    text-decoration: none;
 }
 .cartborder{
     cursor: pointer;
+    text-decoration: none;
 }
 .checkout{
     display: flex;
