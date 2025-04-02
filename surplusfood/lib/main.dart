@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'services/api_service.dart'; // Import API service
-
+import 'screens/food_list_screen.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -95,62 +95,60 @@ class FoodCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      margin: const EdgeInsets.symmetric(vertical: 8),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-      elevation: 4,
-      child: Padding(
-        padding: const EdgeInsets.all(10),
-        child: Row(
-          children: [
-            // Food Image
-            ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: Image.network(
-                item['imageUrl'],
-                height: 60,
-                width: 60,
-                fit: BoxFit.cover,
-              ),
+    return GestureDetector( // Wrap Card with GestureDetector
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => OrderConfirmationScreen(
+              hotel: item,
+              deliveryDetails: {
+                "deliveryMode": "Pickup",
+                "contactPerson": "John Doe",
+                "phone": "+91-9876543210",
+                "deliveryTime": "12:30 PM"
+              },
             ),
-            const SizedBox(width: 10),
-
-            // Food Details
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+          ),
+        );
+      },
+      child: Card(
+        margin: const EdgeInsets.symmetric(vertical: 8),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+        elevation: 4,
+        child: Padding(
+          padding: const EdgeInsets.all(10),
+          child: Row(
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: Image.network(
+                  item['imageUrl'],
+                  height: 60,
+                  width: 60,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              const SizedBox(width: 10),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(item['hotelName'], style: const TextStyle(fontWeight: FontWeight.bold)),
+                    Text(item['foodItem'], style: const TextStyle(color: Colors.grey)),
+                    Text(item['time'], style: const TextStyle(color: Colors.grey)),
+                  ],
+                ),
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Text(
-                    item['hotelName'],
-                    style: const TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  Text(
-                    item['foodItem'],
-                    style: const TextStyle(color: Colors.grey),
-                  ),
-                  Text(
-                    item['time'],
-                    style: const TextStyle(color: Colors.grey),
-                  ),
+                  Text(item['deliveryMode'], style: const TextStyle(color: Colors.green)),
+                  Text("Qty - ${item['quantity']}", style: const TextStyle(fontWeight: FontWeight.bold)),
                 ],
               ),
-            ),
-
-            // Delivery Mode & Quantity
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Text(
-                  item['deliveryMode'],
-                  style: const TextStyle(color: Colors.green),
-                ),
-                Text(
-                  "Qty - ${item['quantity']}",
-                  style: const TextStyle(fontWeight: FontWeight.bold),
-                ),
-              ],
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
